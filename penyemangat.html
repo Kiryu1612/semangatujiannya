@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kata-Kata Penyemangat</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-image:url(img/new.png)
+        }
+        .container {
+            text-align: center;
+            background-image: url(img/new.png);
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+        }
+        .container img{
+            width: 100%;
+        }
+        h1 {
+            color: #ff1500;
+        }
+        p {
+            font-size: 1.2em;
+            color: #333;
+        }
+        body {
+            margin: 0;
+            padding: 0;
+            background: #001f3f;
+            overflow: hidden;
+            height: 100vh;
+        }
+
+        .snowflake {
+            position: absolute;
+            top: -10px;
+            background: white;
+            width: 5px;
+            height: 5px;
+            border-radius: 50%;
+            opacity: 0.8;
+        }
+
+        @keyframes snowfall {
+            to {
+                transform: translateY(100vh);
+            }
+        }
+        .button a{
+            text-decoration: none;
+            font-size: 1rem;
+            color: #111;
+            display: block;
+            align-items: center;
+        }
+    </style>
+</head>
+<body>
+    <audio autoplay>
+        <source src="audio/Tales From the Snow Mountain  Genshin Impact Dragonspine OST Feature Video.mp3" type="audio/mp3">
+    </audio> 
+    <script>
+         function createSnowflakes() {
+            const snowflakeCount = 100;
+            for (let i = 0; i < snowflakeCount; i++) {
+                let snowflake = document.createElement("div");
+                snowflake.classList.add("snowflake");
+                document.body.appendChild(snowflake);
+                
+                let size = Math.random() * 5 + 2;
+                let positionX = Math.random() * window.innerWidth;
+                let duration = Math.random() * 5 + 5;
+                let delay = Math.random() * 5;
+                
+                snowflake.style.width = `${size}px`;
+                snowflake.style.height = `${size}px`;
+                snowflake.style.left = `${positionX}px`;
+                snowflake.style.animation = `snowfall ${duration}s linear ${delay}s infinite`;
+            }
+        }
+
+        createSnowflakes();
+    </script>
+
+    <div class="container">
+        <h1>Hi Zilla Semangat Ya sayangku</h1>
+        <p>"Jangan menyerah, karena setiap usaha yang kamu lakukan membawa kamu lebih dekat ke impianmu.</p>
+        <p>Kesuksesan adalah hasil dari kerja keras, ketekunan, dan keberanian menghadapi tantangan.</p>
+        <p>Percayalah pada dirimu sendiri, mas selalu ada buat kamu. karena kamu lebih kuat dari yang kamu kira."</p>
+    </div>
+    <div class="button">
+        <button>
+            <a href="galeri.html">>///<</a>
+        </button>
+    </div>
+</body>
+</html>

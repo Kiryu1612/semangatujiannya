@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Animasi Love Ari & Salza</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Dancing+Script:wght@700&display=swap');
+        
+        body {
+            margin: 0;
+            padding: 0;
+            background: #ff99cc;
+            overflow: hidden;
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+            font-family: 'Dancing Script', cursive;
+        }
+        .love-container {
+            font-size: 72px;
+            font-weight: bold;
+            color: white;
+            text-align: center;
+            background: red;
+            padding: 20px 40px;
+            border-radius: 50%;
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.3);
+        }
+        .heart {
+            position: absolute;
+            top: -10px;
+            color: red;
+            font-size: 20px;
+            opacity: 0.8;
+            animation: fall linear infinite;
+        }
+        @keyframes fall {
+            to {
+                transform: translateY(100vh);
+            }
+        }
+        .cats {
+            position: absolute;
+            bottom: 20px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        .cat {
+            font-size: 80px;
+            margin: 0 20px;
+            animation: bounce 1s infinite alternate;
+        }
+        @keyframes bounce {
+            from {
+                transform: translateY(0);
+            }
+            to {
+                transform: translateY(-10px);
+            }
+        }
+    </style>
+</head>
+<body>
+    <audio autoplay>
+        <source src="audio/Shania Yan  Sunshine in the Rain  Acoustic version.mp3 " type="audio/mp3">
+    </audio> 
+    <div class="love-container">❤️ Ari & Salza ❤️</div>
+    <div class="cats">
+        <div class="cat">🐱</div>
+        <div class="cat">🐱</div>
+    </div>
+    <script>
+        function createHearts() {
+            const heartCount = 50;
+            for (let i = 0; i < heartCount; i++) {
+                let heart = document.createElement("div");
+                heart.classList.add("heart");
+                heart.innerHTML = "❤️";
+                document.body.appendChild(heart);
+                
+                let size = Math.random() * 20 + 10;
+                let positionX = Math.random() * window.innerWidth;
+                let duration = Math.random() * 5 + 3;
+                let delay = Math.random() * 5;
+                
+                heart.style.fontSize = `${size}px`;
+                heart.style.left = `${positionX}px`;
+                heart.style.animationDuration = `${duration}s`;
+                heart.style.animationDelay = `${delay}s`;
+            }
+        }
+        createHearts();
+    </script>
+</body>
+</html>

@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Galeri 3 foto</title>
+    <style>
+           body {
+            margin: 0;
+            padding: 0;
+            background: #ff99cc;
+            overflow: hidden;
+            height: 100vh;
+        }
+        .heart {
+            position: absolute;
+            top: -10px;
+            color: red;
+            font-size: 20px;
+            opacity: 0.8;
+            animation: fall linear infinite;
+        }
+        @keyframes fall {
+            to {
+                transform: translateY(100vh);
+            }
+        }
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+        body {
+            font-family: Arial, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background: linear-gradient(135deg, #1e3c72, #2a5298);
+        }
+        .slider-container {
+            position: relative;
+            max-width: 800px;
+            overflow: hidden;
+            border-radius: 15px;
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
+        }
+        .slides {
+            display: flex;
+            transition: transform 0.5s ease-in-out;
+        }
+        .slide {
+            min-width: 100%;
+        }
+        .slide img {
+            width: 95%;
+            border-radius: 15px;
+            align-items: center;
+        }
+        .prev, .next {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-100%);
+            background: rgba(0, 0, 0, 0.7);
+            color: white;
+            border: none;
+            padding: 12px 18px;
+            cursor: pointer;
+            font-size: 20px;
+            border-radius: 50%;
+            transition: 0.3s;
+        }
+        .prev:hover, .next:hover {
+            background: rgba(255, 255, 255, 0.5);
+            color: black;
+        }
+        .prev { left: 15px; }
+        .next { right: 15px; }
+        .indicators {
+            position: absolute;
+            bottom: 15px;
+            left: 50%;
+            transform: translateX(-50%);
+            display: flex;
+            gap: 8px;
+        }
+        .dot {
+            width: 12px;
+            height: 12px;
+            background: rgba(255, 255, 255, 0.6);
+            border-radius: 50%;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+        .dot.active {
+            background: white;
+        }
+    </style>
+</head>
+<body>
+    <audio autoplay>
+        <source src="audio/Beautiful in White x Canon in D Piano Cover by Riyandi Kusuma.mp3" type="audio/mp3">
+    </audio> 
+    <div class="slider-container">
+        <div class="slides">
+            <div class="slide"><img src="img/new.png" alt="Slide 1"></div>
+            <div class="slide"><img src="galeri/Gambar WhatsApp 2024-12-16 pukul 02.44.31_35eb1b88.jpg" alt="Slide 2"></div>
+            <div class="slide"><img src="galeri/IMG_20240701_074746.jpg" alt="Slide 3"></div>
+        </div>
+        <button class="prev" onclick="moveSlide(-1)">&#10094;</button>
+        <button class="next" onclick="moveSlide(1)">&#10095;</button>
+        <div class="indicators"></div>
+    </div>
+    
+    <script>
+        let index = 0;
+        const slides = document.querySelector(".slides");
+        const totalSlides = document.querySelectorAll(".slide").length;
+        const indicatorsContainer = document.querySelector(".indicators");
+
+        function createIndicators() {
+            for (let i = 0; i < totalSlides; i++) {
+                let dot = document.createElement("div");
+                dot.classList.add("dot");
+                dot.addEventListener("click", () => moveToSlide(i));
+                indicatorsContainer.appendChild(dot);
+            }
+            updateIndicators();
+        }
+
+        function moveSlide(step) {
+            index = (index + step + totalSlides) % totalSlides;
+            updateSlider();
+        }
+
+        function moveToSlide(slideIndex) {
+            index = slideIndex;
+            updateSlider();
+        }
+
+        function updateSlider() {
+            slides.style.transform = `translateX(-${index * 100}%)`;
+            updateIndicators();
+        }
+
+        function updateIndicators() {
+            document.querySelectorAll(".dot").forEach((dot, i) => {
+                dot.classList.toggle("active", i === index);
+            });
+        }
+
+        createIndicators();
+    </script>
+    <script>
+        function createHearts() {
+            const heartCount = 50;
+            for (let i = 0; i < heartCount; i++) {
+                let heart = document.createElement("div");
+                heart.classList.add("heart");
+                heart.innerHTML = "❤️";
+                document.body.appendChild(heart);
+                
+                let size = Math.random() * 20 + 10;
+                let positionX = Math.random() * window.innerWidth;
+                let duration = Math.random() * 5 + 3;
+                let delay = Math.random() * 5;
+                
+                heart.style.fontSize = `${size}px`;
+                heart.style.left = `${positionX}px`;
+                heart.style.animationDuration = `${duration}s`;
+                heart.style.animationDelay = `${delay}s`;
+            }
+        }
+        createHearts();
+    </script>
+    <button>
+        <a href="final.html">final</a>
+    </button>
+</body>
+</html>
